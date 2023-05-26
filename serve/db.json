@@ -1,0 +1,97 @@
+{
+  "products": [
+    {
+      "name": "iPhone 11 64GB",
+      "price": "10.280.000",
+      "description": "Apple iphone 11 serie",
+      "id": "5F16B812A633A",
+      "image": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/4/17/638173197260604063_iphone-11-dd.jpg"
+    },
+    {
+      "name": "iPhone 12 64GB",
+      "price": "14.890.000",
+      "description": "Apple iphone 12 serie",
+      "id": "535FC8E3E234B",
+      "image": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/1/31/638107840321195326_iphone-12-dd.jpg"
+    },
+    {
+      "name": "iPhone 13 128GB",
+      "price": "16.880.000",
+      "description": "Apple iphone 13 serie",
+      "id": "199E3695DF8DE",
+      "image": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/1/31/638107846050335072_iphone-13-dd-1.jpg"
+    },
+    {
+      "name": "iPhone 14 Pro Max 128GB",
+      "price": "26.430.000",
+      "description": "Apple iphone 14 serie",
+      "id": "2EEC9E811E879",
+      "image": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/1/31/638107858631679725_iphone-14-pro-max-dd-1.jpg"
+    },
+    {
+      "name": "iPhone 14 Pro 128GB",
+      "price": "24.780.000",
+      "description": "Apple iphone 14 serie",
+      "id": "698CD45B6DE62",
+      "image": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/1/31/638107858632184994_iphone-14-pro-dd-1.jpg"
+    },
+    {
+      "name": "iPhone 14 Plus 128GB",
+      "price": "21.780.000",
+      "description": "Apple iphone 14 serie",
+      "id": "562F72A6588A2",
+      "image": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/3/8/638138668784200644_iphone-14-plus-dd.jpg"
+    },
+    {
+      "name": "iPhone 14 128GB",
+      "price": "19.290.000",
+      "description": "Apple iphone 14 serie",
+      "id": "EA87A4261A753",
+      "image": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/3/8/638138668784200644_iphone-14-plus-dd.jpg"
+    },
+    {
+      "name": "Samsung Galaxy S23 Ultra 5G 256GB",
+      "price": "26.030.000",
+      "description": "Samsung S23 Serie ",
+      "image": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/4/28/638182965150346013_samsung-galaxy-s23-ultra-xanh-dd-tragop.jpg",
+      "id": "2QxSjjJeFu0vEX_jsEUnP"
+    },
+    {
+      "name": " iPhone 13 Pro Max 256GB",
+      "price": "27.190.000",
+      "description": "iPhone 13 serie",
+      "image": "https://cdn2.cellphones.com.vn/358x358,webp,q100/media/catalog/product/1/_/1_66_6_2_1_12.jpg",
+      "id": "nVGlpZsqQIPx2kzEHMiW2"
+    }
+  ],
+  "users": [
+    {
+      "id": "883DC843E34AA1CC639C763B1916B",
+      "name": "Administrator",
+      "email": "admin@gmail.com",
+      "password": 12345678,
+      "role": "admin"
+    },
+    {
+      "name": "dasdasd",
+      "email": "user@gmail.com",
+      "password": "12345678",
+      "role": "user",
+      "id": "9m5Rvtlsj2GSHOxVVx4qC"
+    },
+    {
+      "name": "asdasd",
+      "email": "test@gmail.com",
+      "password": "123456789",
+      "role": "user",
+      "id": "DbrUdOlCW3F6IE13qONBf"
+    },
+    {
+      "name": "test1",
+      "email": "test1@gmail.com",
+      "password": "123456789",
+      "role": "user",
+      "id": "2ONaY54-fB4J9BKXdwNdp"
+    }
+  ]
+}
