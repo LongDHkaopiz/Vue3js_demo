@@ -37,8 +37,12 @@ const store = createStore({
         state.email = localStorage.getItem('email');
        }
     }
+  },
+  getters: {
+    isLogin: state => state.email
   }
 })
+export default store;
 const app = createApp(App).use(router)
 app.component('font-awesome-icon', FontAwesomeIcon)
 app.use(VueAxios, { $request: axios })

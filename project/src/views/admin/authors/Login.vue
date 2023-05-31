@@ -48,6 +48,7 @@
 </template>
 <script>
 import { API_USER, API_LOGIN } from '../common/contants'
+import { mapActions } from 'vuex'
 export default {
     name: "SignForm",
     data() {
@@ -62,7 +63,8 @@ export default {
             }
         }
     },
-    methods: {
+	methods: {
+		...mapActions(['login']),
         checkLogin() {
             this.$swal.fire({
                 title: 'Good job!',

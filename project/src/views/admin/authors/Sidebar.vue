@@ -1,13 +1,11 @@
 <template>
     <!-- <el-menu :default-active="activeIndex2" class="el-menu-demo" mode="horizontal" background-color="#545c64"
-            text-color="#fff" active-text-color="#ffd04b" @select="handleSelect">
-            <el-menu-item index="4" v-if="$store.state.email" @click="logout()">
-                <router-link to="/admin/sign-in" style="padding-left: 200px">Logout</router-link>
-            </el-menu-item>
-        </el-menu> -->
-    <!-- Navbar -->
+        text-color="#fff" active-text-color="#ffd04b" @select="handleSelect">
+        <el-menu-item index="4" v-if="$store.state.email" @click="logout()">
+            <router-link to="/admin/sign-in" style="padding-left: 200px">Logout</router-link>
+        </el-menu-item>
+    </el-menu> -->
     <div class="wrapper">
-        <!-- Sidebar -->
         <nav id="sidebar">
             <div class="sidebar-header">
                 <img src="../../../assets/img/admin.jpeg" alt="" class="admin-manage">
@@ -37,8 +35,11 @@
                     <router-link to="/admin/dashboard/weather">Weather</router-link>
                 </li>
             </ul>
-            <div class="logout-admin">
-                <router-link to="/admin/sign-in">
+            <div class="logout-admin" >
+                <router-link  v-if="!$store.state.email" to="/admin/sign-in">
+                      Login
+                </router-link>
+                <router-link  v-if="$store.state.email" to="/admin/sign-in" @click="logout()">
                     <font-awesome-icon icon="fa-solid fa-right-from-bracket" fade />Logout
                 </router-link>
             </div>
@@ -49,7 +50,6 @@
 
                     <button type="button" id="sidebarCollapse" class="btn btn-info">
                         <font-awesome-icon icon="fa-solid fa-bars" />
-                        <!-- // <font-awesome-icon icon="fa-solid fa-user-secret" /> -->
                     </button>
 
                 </div>

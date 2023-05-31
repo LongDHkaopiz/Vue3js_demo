@@ -36,6 +36,8 @@ import dashboard from './Sidebar.vue'
 import { Line, Bar, Doughnut } from 'vue-chartjs'
 import { planetChartData, chartUser } from '../common/chart_dash.js'
 import chartProduct from '../common/chartProduct.js'
+import { mapGetters } from 'vuex'
+import store from '../../../main'
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -65,6 +67,18 @@ export default {
             date: new Date()
         }
     },
+    computed: {
+        ...mapGetters(['isLogin'])
+    },
+    beforeRouteEnter(to, from, next) {
+        if (!store.isLogin) {
+            next()
+        } else {
+            next({
+                name:'admin.sign-in'
+            })
+        } 
+    }
 
 }
 </script>

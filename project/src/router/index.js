@@ -1,5 +1,16 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import store from '../main'
+
+const requireAuth = (to, from, next) => {
+  if (store.getters.isLogin) {
+    next()
+  } else {
+    next({
+      name:'admin.sign-in'
+    })
+  }
+} 
 
 const routes = [
   {
@@ -10,18 +21,19 @@ const routes = [
   {
     path: '/admin/dashboard',
     name: 'admin.dashboard',
-    component: () => import(/* webpackChunkName: "about" */ '../views/admin/authors/Dashboard.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/admin/authors/Dashboard.vue'),
+    beforeEnter: requireAuth
   },
    {
     path: '/admin/dashboard/weather',
     name: 'admin.dashboard.weather',
     component: () => import(/* webpackChunkName: "about" */ '../views/admin/authors/Weather.vue')
   },
-  {
-    path: '/admin/',
-    name: 'admin.admin-page',
-    component: () => import(/* webpackChunkName: "about" */ '../views/admin/Adminpage.vue')
-  },
+  // {
+  //   path: '/admin/',
+  //   name: 'admin.admin-page',
+  //   component: () => import(/* webpackChunkName: "about" */ '../views/admin/Adminpage.vue')
+  // },
   {
     path: '/admin/sign-in',
     name: 'admin.sign-in',
@@ -93,9 +105,18 @@ const routes = [
   
 ]
 
+
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
-
+router.beforeEach((to, from,next) => {
+  if (to.meta.requireAuth && !store.getters.isLogin) {
+    next({
+      name:'admin.sign-up'
+    })
+  } else {
+    next()
+  }
+})
 export default router
