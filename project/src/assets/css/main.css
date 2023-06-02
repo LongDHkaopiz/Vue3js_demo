@@ -304,6 +304,12 @@ list-style: none;
   flex-direction: column;
 }
 .el-form--inline .el-form-item__content {
-  
+  display: contents;
   vertical-align: top;
+}
+.detail-info {
+  margin-bottom: 50px;
+}
+.chart-info__forecast {
+  margin-bottom: 50px;
 }

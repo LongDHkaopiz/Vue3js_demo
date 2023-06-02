@@ -31,8 +31,7 @@
 							<button type="submit" class="btn login_btn">Login</button>
 						</div>
 					</form>
-					<!-- <br>
-					{{ $store.state.email }} -->
+			
 				</div>
 				<div class="mt-4">
 					<div class="d-flex justify-content-center links">
@@ -42,6 +41,8 @@
 						<router-link to="/forgot-password">Forgot your password?</router-link>
 					</div>
 				</div>
+				<!-- <div class="g-recaptcha" data-sitekey="recaptchaSiteKey" data-callback="vueRecaptchaApiLoaded"></div> -->
+				<vue-recaptcha ref="recaptcha" sitekey="recaptchaSiteKey" @verify="handleRecaptchaVerify"></vue-recaptcha>
 			</div>
 		</div>
 	</div>
@@ -49,8 +50,10 @@
 <script>
 import { API_USER, API_LOGIN } from '../common/contants'
 import { mapActions } from 'vuex'
+import { VueRecaptcha } from 'vue-recaptcha-v3'
 export default {
-    name: "SignForm",
+	name: "SignForm",
+	components: { VueRecaptcha },
     data() {
         return {
             user: {
@@ -60,7 +63,10 @@ export default {
             errors: {
                 email: "",
                 password: "",
-            }
+			},
+			recaptchaSiteKey: '6LexlFgmAAAAAKv1sV8CZ7081YVUFc9iDDZAXflj',
+			recaptchaResponse: '',
+			
         }
     },
 	methods: {
@@ -71,13 +77,18 @@ export default {
                 text: "You login successfully!",
                 icon: 'success'
             }).then((result) => {
-                if (result.isConfirmed) {
+				if (result.isConfirmed) {
+					// Verify the reCAPTCHA token before submitting the form
+					if (this.recaptchaResponse === null) {
+						console.error('reCAPTCHA v3 token is missing!');
+						return;
+					}
                     this.$request.post(API_LOGIN, this.user).then(
                         res => {
 							if (res.data.success) {
 								if (res.data.user.role == 'admin') {
 									this.$router.push({
-										name: 'admin.dashboard'
+										name: 'admin.dashboard',
 									})
 								} else {
 									this.$router.push({
@@ -97,8 +108,23 @@ export default {
                     )
                 }
             })
-        },
-    },
+		},
+		// vueRecaptchaApiLoaded() {
+		// 	grecaptcha.ready(() => {
+		// 		grecaptcha.execute(recaptchaSiteKey, { action: "submit" }).then((token) => {
+		// 			this.recaptchaResponse = token;
+		// 		});
+		// 	});
+		// },
+		handleRecaptchaVerify() {
+			grecaptcha.ready(() => {
+				grecaptcha.execute(this.recaptchaSiteKey).then((response) => {
+					this.recaptchaResponse = response;
+				});
+			});
+			// this.recaptchaResponse =response
+		},
+	},
    
 }
 </script>

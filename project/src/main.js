@@ -8,7 +8,6 @@ import VueSweetalert2 from 'vue-sweetalert2'
 import 'sweetalert2/dist/sweetalert2.min.css'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
-
 /* import the fontawesome core */
 import { library } from '@fortawesome/fontawesome-svg-core'
 
