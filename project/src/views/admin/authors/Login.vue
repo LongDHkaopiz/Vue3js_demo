@@ -86,7 +86,7 @@ export default {
                     this.$request.post(API_LOGIN, this.user).then(
                         res => {
 							if (res.data.success) {
-								if (res.data.user.role == 'admin') {
+								if (res.data.user.role === 'admin') {
 									this.$router.push({
 										name: 'admin.dashboard',
 									})

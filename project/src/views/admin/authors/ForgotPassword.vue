@@ -8,14 +8,19 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-center form_container">
-                        <form >
+                        <form @submit.prevent="handeEmail()">
                             <div class="input-group mb-3">
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="fas fa-key"></i></span>
                                 </div>
                                 <input type="email" v-model="user.email" class="form-control input_pass" placeholder="email">
                             </div>
-                            <div class="input-group mb-3">
+                            <div class="form-item row py-3">
+                                <div class="col-sm-9">
+                                    <button type="submit" class="btn btn-primary" style="margin-left: 56px;">Confirm</button>
+                                </div>
+                            </div> 
+                            <!-- <div class="input-group mb-3">
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="fas fa-key"></i></span>
                                 </div>
@@ -29,7 +34,7 @@
                                 <div class="col-sm-9">
                                     <button type="submit" class="btn btn-primary" style="margin-left: 56px;">Sign Up</button>
                                 </div>
-                            </div>
+                            </div> -->
                         </form>
                     </div>
 
@@ -44,8 +49,7 @@ export default {
     data() {
         return {
             user: {
-                email: "",
-                password: "",
+                email: ""
             },
             errors: {
                 email: "",
@@ -80,13 +84,16 @@ export default {
             }
             return isValid
         },
-        save() {
-           getUser()
-        },
-        getUser() {
-            this.$request.get(API_FORGOT_PASS).then((result) => {
-                this.user = result.data
-                console.log(result.data)
+        handeEmail() {
+            this.$request.post(API_FORGOT_PASS,this.user).then((result) => {
+                this.user = result.data.user
+                if (this.user) {
+                    this.$router.push({
+                        name: 'admin.update-password',
+                        params: { id: this.user.id }
+                    })
+                }
+                console.log(this.user)
             }).catch((err) => {
                 alert(err)
             });

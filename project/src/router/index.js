@@ -29,11 +29,11 @@ const routes = [
     name: 'admin.dashboard.weather',
     component: () => import(/* webpackChunkName: "about" */ '../views/admin/authors/Weather.vue')
   },
-  // {
-  //   path: '/admin/',
-  //   name: 'admin.admin-page',
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/admin/Adminpage.vue')
-  // },
+  {
+    path: '/update-password/:id',
+    name: 'admin.update-password',
+    component: () => import(/* webpackChunkName: "about" */ '../views/admin/authors/UpdatePassword.vue')
+  },
   {
     path: '/admin/sign-in',
     name: 'admin.sign-in',

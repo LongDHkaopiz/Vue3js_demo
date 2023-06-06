@@ -1,5 +1,5 @@
 
-export const BASE_URL = 'http://localhost:8003/';
+export const BASE_URL = 'http://localhost:8004/';
 // product
 export const API_PRODUCT = BASE_URL + 'api/v1/products';
 export const API_USER = BASE_URL + 'api/v1/users';
