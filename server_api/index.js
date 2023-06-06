@@ -23,14 +23,14 @@ app.use(cors())
 app.use(bodyParser.json())
 
 app.get('/', (req, res) => {
-  const data = db.get('users').find({ email: 'test@gmail.com' }).value()
   res.send(`<h2 align="center" style="margin-top: 100px;">Longdh</h2>`)
  
 })
 
 app.post('/api/v1/login', (req, res) => {
   const { email, password } = req.body;
-  const user = db.get('users').find(u => u.email === email && u.password === password)
+  //const user = db.get('users').find(u => u.email === email && u.password === password)
+  const user = db.get(`users`).find({ email: email, password: password })
   const data = db.get(`users`).find({ email: email }).value()
   if (!user) {
     return res.status(401).json({

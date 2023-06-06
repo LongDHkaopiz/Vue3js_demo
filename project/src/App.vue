@@ -1,8 +1,17 @@
 <template>
   <nav>
     <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link> 
-    <router-link v-if="$route.path !== '/admin/sign-in'" to="/admin/dashboard"> | Dashboard</router-link>
+    <router-link to="/about">About</router-link>
+    <router-link v-if="$route.path !== '/admin/sign-in'" to="/admin/dashboard"> |
+      Dashboard</router-link>
+    <div class="logout-admin" v-if="this.$route.params.role === 'user'">
+      <router-link v-if="!$store.state.email" to="/admin/sign-in">
+        Login
+      </router-link>
+      <router-link v-if="$store.state.email" to="/admin/sign-in" @click="logout()" style="color: #2c3e50;">
+        <font-awesome-icon icon="fa-solid fa-right-from-bracket" fade />Logout
+      </router-link>
+    </div>
   </nav>
   <!-- <div class="container">
       <div class="d-flex flex-column flex-md-row align-item-center justify-content-between p-3 px-md-4 mb-3 bg-white">
@@ -21,7 +30,19 @@
     
      
     </div> -->
-  <router-view/>
+  <router-view />
 </template>
 
+<script>
+export default {
+  mounted() {
+    this.$store.commit("initialiseStore");
+  },
+  methods: {
+    logout() {
+      this.$store.commit("logout");
+    },
+  },
 
+}
+</script>

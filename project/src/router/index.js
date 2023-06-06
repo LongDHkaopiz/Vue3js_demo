@@ -14,7 +14,7 @@ const requireAuth = (to, from, next) => {
 
 const routes = [
   {
-    path: '/',
+    path: '/:role',
     name: 'home',
     component: HomeView
   },
@@ -24,10 +24,15 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/admin/authors/Dashboard.vue'),
     beforeEnter: requireAuth
   },
-   {
+  {
     path: '/admin/dashboard/weather',
     name: 'admin.dashboard.weather',
     component: () => import(/* webpackChunkName: "about" */ '../views/admin/authors/Weather.vue')
+  },
+  {
+    path: '/admin/dashboard/country',
+    name: 'admin.dashboard.country',
+    component: () => import(/* webpackChunkName: "about" */ '../views/admin/authors/Country.vue')
   },
   {
     path: '/update-password/:id',

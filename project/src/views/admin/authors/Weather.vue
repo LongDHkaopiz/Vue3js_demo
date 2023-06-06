@@ -4,7 +4,7 @@
         <div class="container weather-today" style="margin-top: 70px;">
             <el-form :inline="true" class="demo-form-inline">
                 <el-form-item label="Location by">
-                    <el-input  v-model="searchCountry" placeholder="Location by" />
+                    <el-input v-model="searchCountry" placeholder="Location by" />
                 </el-form-item>
                 <el-form-item label="Option by">
                     <el-select v-model="searchOption" class="m-2" placeholder="Select" size="small" label="Option">
@@ -77,7 +77,22 @@
                 <h3 class="title-chart__weather">
                     Real time temperature chart of {{ weather && weather.location && weather.location.name }}
                 </h3>
-                <Bar v-if="!isLoading" :data="weatherChart.chartData" :options="weatherChart.options" style="width:600px;" />
+                <Bar v-if="!isLoading" :data="weatherChart.chartData" :options="weatherChart.options"
+                    style="width:600px;" />
+                <div class="weather-for__7days" style="margin-top: 30px; margin-bottom: 68px;">
+                    <h3 class="title-weather" style="margin-bottom: 20px;">
+                        Weather forecast for the next 7 days
+                    </h3>
+                    <el-carousel :interval="2000" type="card" height="220px">
+                        <el-carousel-item v-for="item in forecastday" :key="item">
+                            <img :src="item && item.day.condition && item.day.condition.icon " style="width: 100px;">
+                            <h4 text="12px" justify="center" >{{ item && item.day.condition && item.day.condition.text  }}</h4>
+                            <h4 text="12px" justify="center" >{{ item && item.day.mintemp_c }}&deg;C - {{ item && item.day.maxtemp_c }}&deg;C</h4>
+                            <h4 text="12px" justify="center" >{{ item && item.day.avgvis_km }}km</h4>
+                            <h4 text="12px" justify="center">{{ item.date }}</h4>
+                        </el-carousel-item>
+                    </el-carousel>
+                </div>
             </div>
         </div>
     </div>
@@ -124,7 +139,7 @@ export default defineComponent({
             temp_f_values: '',
             hourArray: '',
             // weatherChart: weatherChart,
-            isLoading:false,
+            isLoading: false,
             chartData: {
                 labels: [],
                 datasets: [
@@ -195,8 +210,8 @@ export default defineComponent({
     methods: {
         async getWeather() {
             var API_PERSON_KEY = `607d30125c34472888023252233105`
-            var API_WEATHER = `http://api.weatherapi.com/v1/${this.searchOption}?key=${API_PERSON_KEY}&q=${this.searchCountry}&aqi=no`
-            
+            var API_WEATHER = `http://api.weatherapi.com/v1/${this.searchOption}?key=${API_PERSON_KEY}&q=${this.searchCountry}&days=7&aqi=no`
+
             try {
                 this.isLoading = true
                 const response = await fetch(API_WEATHER);
@@ -214,10 +229,10 @@ export default defineComponent({
                             const date = new Date(time);
                             return date.getHours();
                         });
-                    
+
                         this.chartData.labels = this.hourArray;
                         this.chartData.datasets[0].data = this.temp_c_values;
-                        this.chartData.datasets[1].data = this.temp_f_values;  
+                        this.chartData.datasets[1].data = this.temp_f_values;
                     }
                 }
             } catch (e) {
@@ -225,8 +240,8 @@ export default defineComponent({
             } finally {
                 this.isLoading = false
             }
-           
-        }, 
+
+        },
     },
 
     async mounted() {
@@ -235,3 +250,20 @@ export default defineComponent({
 
 })
 </script>
+<style scoped>
+.el-carousel__item h3 {
+    color: #475669;
+    opacity: 0.75;
+    line-height: 200px;
+    margin: 0;
+    text-align: center;
+}
+
+.el-carousel__item:nth-child(2n) {
+    background-color: #99a9bf;
+}
+
+.el-carousel__item:nth-child(2n + 1) {
+    background-color: #d3dce6;
+}
+</style>

@@ -34,6 +34,9 @@
                 <li>
                     <router-link to="/admin/dashboard/weather">Weather</router-link>
                 </li>
+                <li>
+                    <router-link to="/admin/dashboard/country">Country</router-link>
+                </li>
             </ul>
             <div class="logout-admin" >
                 <router-link  v-if="!$store.state.email" to="/admin/sign-in">

@@ -28,7 +28,7 @@ export default {
       { src: 'https://w.ffwant.com/vue-admin-template-plus/static/js/app.ab2a988c.js' },
       { src: 'https://w.ffwant.com/vue-admin-template-plus/static/js/chunk-libs.250b712b.js' },
     ],
-  }
+  },
 }
 </script>
 <style scoped>
@@ -40,3 +40,5 @@ export default {
 @import url('https://w.ffwant.com/vue-admin-template-plus/static/css/chunk-c301f518.eda770dd.css');
 @import '../assets/css/main.css';
 </style>
+
+

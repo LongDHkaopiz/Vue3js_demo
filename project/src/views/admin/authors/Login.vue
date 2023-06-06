@@ -92,7 +92,8 @@ export default {
 									})
 								} else {
 									this.$router.push({
-										name: 'home'
+										name: 'home',
+										params: { role: 'user' }
 									})
 								}
 								this.$store.commit('login', this.user.email)
@@ -116,13 +117,13 @@ export default {
 		// 		});
 		// 	});
 		// },
-		handleRecaptchaVerify() {
-			grecaptcha.ready(() => {
-				grecaptcha.execute(this.recaptchaSiteKey).then((response) => {
-					this.recaptchaResponse = response;
-				});
-			});
-			// this.recaptchaResponse =response
+		handleRecaptchaVerify(response) {
+			// grecaptcha.ready(() => {
+			// 	grecaptcha.execute(this.recaptchaSiteKey).then((response) => {
+			// 		this.recaptchaResponse = response;
+			// 	});
+			// });
+			this.recaptchaResponse =response
 		},
 	},
    

@@ -313,3 +313,19 @@ list-style: none;
 .chart-info__forecast {
   margin-bottom: 50px;
 }
+h3,h4 {
+  font-size: medium;
+}
+/* Country */
+.list-country {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2em;
+}
+.country-item {
+  flex-direction: column;
+  align-items: center;
+  width: 15%;
+}
