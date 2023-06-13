@@ -85,10 +85,12 @@
                     </h3>
                     <el-carousel :interval="2000" type="card" height="220px">
                         <el-carousel-item v-for="item in forecastday" :key="item">
-                            <img :src="item && item.day.condition && item.day.condition.icon " style="width: 100px;">
-                            <h4 text="12px" justify="center" >{{ item && item.day.condition && item.day.condition.text  }}</h4>
-                            <h4 text="12px" justify="center" >{{ item && item.day.mintemp_c }}&deg;C - {{ item && item.day.maxtemp_c }}&deg;C</h4>
-                            <h4 text="12px" justify="center" >{{ item && item.day.avgvis_km }}km</h4>
+                            <img :src="item && item.day.condition && item.day.condition.icon" style="width: 100px;">
+                            <h4 text="12px" justify="center">{{ item && item.day.condition && item.day.condition.text }}
+                            </h4>
+                            <h4 text="12px" justify="center">{{ item && item.day.mintemp_c }}&deg;C - {{ item &&
+                                item.day.maxtemp_c }}&deg;C</h4>
+                            <h4 text="12px" justify="center">{{ item && item.day.avgvis_km }}km</h4>
                             <h4 text="12px" justify="center">{{ item.date }}</h4>
                         </el-carousel-item>
                     </el-carousel>
@@ -246,6 +248,7 @@ export default defineComponent({
 
     async mounted() {
         await this.getWeather();
+
     },
 
 })

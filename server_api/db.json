@@ -92,6 +92,13 @@
       "password": "123456789",
       "role": "user",
       "id": "DbrUdOlCW3F6IE13qONBf"
+    },
+    {
+      "name": "Đào Hải Long",
+      "email": "long@gmail.com",
+      "password": "long@123456",
+      "role": "admin",
+      "id": "-f175AO5EApD9hQ7hzM48"
     }
   ]
 }

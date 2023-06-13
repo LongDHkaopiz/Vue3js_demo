@@ -11,7 +11,7 @@ const { log } = require("console")
 let rawdata = fs.readFileSync('db.json');
 let routes = JSON.parse(rawdata);
 
-const PORT = 8004;
+const PORT = 3000;
 
 db.defaults({ products: [] }).write()
 
@@ -102,8 +102,6 @@ modules.forEach(moduleName => {
 
  
 })
-
-
 
 
 app.listen(PORT, ()=> {

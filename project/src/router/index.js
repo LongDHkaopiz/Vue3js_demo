@@ -35,6 +35,16 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/admin/authors/Country.vue')
   },
   {
+    path: '/admin/dashboard/anime',
+    name: 'admin.dashboard.anime',
+    component: () => import(/* webpackChunkName: "about" */ '../views/admin/authors/Anime.vue')
+  },
+  {
+    path: '/admin/dashboard/search-by-google',
+    name: 'admin.dashboard.googlesearch',
+    component: () => import(/* webpackChunkName: "about" */ '../views/admin/authors/Search.vue')
+  },
+  {
     path: '/update-password/:id',
     name: 'admin.update-password',
     component: () => import(/* webpackChunkName: "about" */ '../views/admin/authors/UpdatePassword.vue')

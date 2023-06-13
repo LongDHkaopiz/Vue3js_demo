@@ -7,6 +7,7 @@ import axios from 'axios'
 import VueSweetalert2 from 'vue-sweetalert2'
 import 'sweetalert2/dist/sweetalert2.min.css'
 import ElementPlus from 'element-plus'
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import 'element-plus/dist/index.css'
 /* import the fontawesome core */
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -48,4 +49,7 @@ app.use(VueAxios, { $request: axios })
 app.use(VueSweetalert2)
 app.use(ElementPlus)
 app.use(store)
+for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+  app.component(key, component)
+}
 app.mount('#app')
