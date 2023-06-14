@@ -211,7 +211,7 @@ export default defineComponent({
     },
     methods: {
         async getWeather() {
-            var API_PERSON_KEY = `607d30125c34472888023252233105`
+            var API_PERSON_KEY = `aacea706dcc34187b1d22640231406`
             var API_WEATHER = `http://api.weatherapi.com/v1/${this.searchOption}?key=${API_PERSON_KEY}&q=${this.searchCountry}&days=7&aqi=no`
 
             try {

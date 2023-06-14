@@ -35,7 +35,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/admin/authors/Country.vue')
   },
   {
-    path: '/admin/dashboard/anime',
+    path: '/admin/dashboard/anime-image',
     name: 'admin.dashboard.anime',
     component: () => import(/* webpackChunkName: "about" */ '../views/admin/authors/Anime.vue')
   },

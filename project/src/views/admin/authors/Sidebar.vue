@@ -38,17 +38,17 @@
                     <router-link to="/admin/dashboard/country">Country</router-link>
                 </li>
                 <li>
-                    <router-link to="/admin/dashboard/anime">Anime</router-link>
+                    <router-link to="/admin/dashboard/anime-image">Image Anime</router-link>
                 </li>
                 <li>
-                     <router-link to="/admin/dashboard/search-by-google">Search By Google</router-link>
+                    <router-link to="/admin/dashboard/search-by-google">Search By Google</router-link>
                 </li>
             </ul>
-            <div class="logout-admin" >
-                <router-link  v-if="!$store.state.email" to="/admin/sign-in">
-                      Login
+            <div class="logout-admin">
+                <router-link v-if="!$store.state.email" to="/admin/sign-in">
+                    Login
                 </router-link>
-                <router-link  v-if="$store.state.email" to="/admin/sign-in" @click="logout()">
+                <router-link v-if="$store.state.email" to="/admin/sign-in" @click="logout()">
                     <font-awesome-icon icon="fa-solid fa-right-from-bracket" fade />Logout
                 </router-link>
             </div>

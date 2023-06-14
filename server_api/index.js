@@ -10,6 +10,7 @@ const jwt = require('jsonwebtoken');
 const { log } = require("console")
 let rawdata = fs.readFileSync('db.json');
 let routes = JSON.parse(rawdata);
+const axios = require('axios');
 
 const PORT = 3000;
 
@@ -102,7 +103,29 @@ modules.forEach(moduleName => {
 
  
 })
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
+app.get('/api/steins-gate', async (req, res) => {
+  const url = 'https://hummingbirdv1.p.rapidapi.com/anime/steins-gate';
+  const options = {
+    headers: {
+      'X-RapidAPI-Key': 'dde66f0561msh324e6dc8a212669p1f94d2jsna8556e10d67a',
+      'X-RapidAPI-Host': 'hummingbirdv1.p.rapidapi.com'
+    }
+  };
+
+  try {
+    const response = await axios.get(url, options);
+    res.send(response.data);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
 
 app.listen(PORT, ()=> {
   console.log(`Backend is running on http://localhost:${PORT}`)
