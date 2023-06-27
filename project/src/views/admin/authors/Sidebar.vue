@@ -44,6 +44,9 @@
                     <router-link to="/admin/dashboard/search-by-google">Search By Google</router-link>
                 </li>
             </ul>
+            <el-switch v-model="value2" class="ml-2" style="--el-switch-on-color: #222;" @change="toggleDarkMode"
+                inline-prompt active-icon="CircleCheck" inactive-icon="Close" />
+
             <div class="logout-admin">
                 <router-link v-if="!$store.state.email" to="/admin/sign-in">
                     Login
@@ -67,20 +70,40 @@
     </div>
 </template>
 <script>
-
+// import { ref } from 'vue'
+// const value2 = ref(false)
+import { Check, Close } from '@element-plus/icons-vue'
 export default {
     name: "dashboard",
     data() {
         return {
-            user: []
+            user: [],
+            value2: false
         }
+    },
+    computed: {
+        value2: {
+            get() {
+                return this.$store.state.switchOn;
+            },
+            // set(value) {
+            //     this.$store.commit("setSwitchOn", value);
+            // }
+        },
     },
     mounted() {
         this.$store.commit("initialiseStore");
+        // if (this.$store.state.switchOn) {
+        //     this.toggleDarkMode()
+        // }
     },
     methods: {
         logout() {
             this.$store.commit("logout");
+        },
+        toggleDarkMode() {
+            var back = document.body.classList.toggle('dark-mode');
+            this.$store.commit("setSwitchOn", back);
         },
     },
     setup() {
@@ -105,3 +128,14 @@ export default {
 
 };
 </script>
+
+<style>
+.dark-mode {
+    background-color: darkgray;
+    color: white;
+}
+
+body {
+    transition: background-color 1.5s ease-in-out;
+}
+</style> 

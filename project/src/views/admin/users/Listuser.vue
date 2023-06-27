@@ -17,11 +17,33 @@
                         </tr>
                     </thead>
                     <tbody :key="index" v-for="(user, index) in users">
-                        <tr> 
+                        <tr>
                             <td scope="col"> {{ index }}</td>
                             <td>{{ user.email }}</td>
                             <td>{{ user.name }}</td>
-                            <td>{{ user.password }}</td>
+                            <!-- <td>{{ user.password }}</td> -->
+                            <!-- <td>
+                                <div class="input-group">
+                                    <input v-bind:type="showPassword ? 'text' : 'password'" class="form-control"
+                                        v-bind:value="user.password" disabled />
+                                    <button class="btn btn-outline-secondary" type="button"
+                                        @click="showPassword = !showPassword">
+                                        {{ showPassword ? 'Hide' : 'Show' }}
+                                    </button>
+                                </div>
+                            </td> -->
+                            <td>
+                                <div class="input-group">
+                                    <input :type="showPassword[index] ? 'text' : 'password'" class="form-control"
+                                        :value="user.password" disabled />
+                                    <button class="btn btn-outline-secondary" type="button"
+                                        @click="toggleShowPassword(index)">
+                                        <View v-if="showPassword[index]" style="width: 1em;" />
+                                        <Hide v-else style="width: 1em;" />
+                                        <!-- <Edit style="width: 1em; height: 1em; margin-right: 8px" /> -->
+                                    </button>
+                                </div>
+                            </td>
                             <td>{{ user.role }}</td>
                             <td>
                                 <button class="btn btn-danger mx-1" @click="onDelete(user.id)">Delete</button>
@@ -34,13 +56,12 @@
                 </table>
             </div>
             <button class="btn btn-primary create-new float-right ">
-                <router-link to="/admin/users/create-new" class="text-white"> Create New</router-link> 
+                <router-link to="/admin/users/create-new" class="text-white"> Create New</router-link>
             </button>
         </div>
-        
-        
+
+
     </div>
-   
 </template>
 
 
@@ -51,8 +72,23 @@ export default {
     name: "userlist",
     data() {
         return {
-            users:[]
+            users: [],
+            showPassword: []
         }
+    },
+    // props: {
+    //     index: {
+    //         type: Number,
+    //         required: true,
+    //     },
+    //     user: {
+    //         type: Object,
+    //         required: true,
+    //     },
+    // },
+    mounted() {
+        // initialize the showPassword array with 'false' values for each user
+        this.showPassword = new Array(this.users.length).fill(false)
     },
     created() {
         this.getAllUser()
@@ -90,7 +126,11 @@ export default {
                     });
                 }
             })
-        }
+        },
+        toggleShowPassword(index) {
+            // toggle the show/hide status of the password input at the given index
+            this.showPassword[index] = !this.showPassword[index]
+        },
     }
 }
 </script>

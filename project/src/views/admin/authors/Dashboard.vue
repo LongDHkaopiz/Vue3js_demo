@@ -7,13 +7,14 @@
                     <Bar :data="chartUser.chartData" :options="chartUser.options" style="height: 300px; width: 400px;" />
                 </div>
                 <div class="new-chart product">
-                    <Bar :data="chartProduct.chartData" :options="chartProduct.options" style="height: 300px; width: 400px;" />
+                    <Bar :data="chartProduct.chartData" :options="chartProduct.options"
+                        style="height: 300px; width: 400px;" />
                 </div>
             </div>
             <div class="new-chart total-actual">
                 <Line :data="planetChartData.chartData" :options="planetChartData.options" style="width:600px;" />
             </div>
-            <el-calendar v-model="date" style="width: 1000px; height: 700px;"/>
+            <el-calendar v-model="date" style="width: 1000px; height: 700px;" />
         </div>
 
 
@@ -75,9 +76,9 @@ export default {
             next()
         } else {
             next({
-                name:'admin.sign-in'
+                name: 'admin.sign-in'
             })
-        } 
+        }
     }
 
 }

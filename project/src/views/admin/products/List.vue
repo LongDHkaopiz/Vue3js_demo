@@ -8,9 +8,9 @@
                 </button>
             </div>
 
-            <div class="product-items  table-wrapper-scroll-y my-custom-scrollbar mb-3 text-center ">
+            <!-- <div class="product-items  table-wrapper-scroll-y my-custom-scrollbar mb-3 text-center ">
                 <table class="table table-fixed table-bordered table-striped mb-0" width="100%">
-                    <thead>
+                    <thead style="position: sticky; top: 0">
                         <tr>
                             <th scope="col">Stt</th>
                             <th scope="col">Image</th>
@@ -20,7 +20,7 @@
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody style="max-height: 200px; overflow-y: scroll">
                         <tr :key="index" v-for="(product, index) in products">
                             <td scope="col"> {{ index }}</td>
                             <td><img :src="product.image" style="width:60px"></td>
@@ -36,7 +36,33 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
+            </div> -->
+            <span>Border: <el-switch v-model="parentBorder" /></span>
+            <el-table :data="products" style="width: 100%" height="530" :border="parentBorder">
+                <el-table-column fixed type="index" label="STT" width="60" />
+                <el-table-column prop="image" label="Image" width="120">
+                    <template #default="{ row }">
+                        <img :src="row.image" style="width:80px">
+                    </template>
+                </el-table-column>
+                <el-table-column prop="name" label="Name" width="210" />
+                <el-table-column prop="price" label="Price" width="150" :sort-by="'price'" :sortable="true"
+                    :formatter="(row) => `${row.price} VND`" :type="'number'">
+                    <!-- <template #default="{ row }">
+                        <span>{{ row.price }} VND</span>
+                    </template> -->
+                </el-table-column>
+                <el-table-column prop="description" label="Description" width="460" />
+                <el-table-column label="Operations" width="180" prop="id">
+                    <template #default="{ row }">
+                        <el-button type="danger" size="big" @click="onDelete(row.id)"
+                            style="margin-right: 10px;">Delete</el-button>
+                        <router-link :to="{ name: 'product.update-product', params: { id: row.id } }">
+                            <el-button type="primary" size="big">Edit</el-button>
+                        </router-link>
+                    </template>
+                </el-table-column>
+            </el-table>
 
         </div>
 
@@ -48,11 +74,13 @@ export default {
     name: "ProductList",
     data() {
         return {
-            products: []
+            products: [],
+            parentBorder: false
         }
     },
     created() {
         this.getAllProduct()
+
     },
     methods: {
         getAllProduct() {
@@ -88,7 +116,7 @@ export default {
 
                 }
             })
-        },  
+        },
     },
 }
 </script>

@@ -4,7 +4,9 @@ var i12 = [];
 var i13 = [];
 var i14 = [];
 var ss = [];
-
+var tablet = [];
+const array_check = ['Laptop', 'Macbook']
+var computer = [];
 const product_res = await fetch(API_PRODUCT);
 // Storing data in form of JSON
 var data_product = await product_res.json();
@@ -17,8 +19,16 @@ data_product.forEach(element => {
         i12.push(element)
     } else if(element.description.includes("iphone 11")) {
         i11.push(element)
-    } else {
+    } else if ((element.name.indexOf('Macbook') !== -1
+        || element.name.indexOf('Laptop') !== -1)
+        && (array_check.includes("Macbook")
+            || array_check.includes("Laptop"))
+        ) {
+        computer.push(element)
+    }else if(element.description.indexOf('Samsung') !== -1 ) {
         ss.push(element)
+    } else {
+        tablet.push(element)
     }
 });
 
@@ -51,6 +61,21 @@ export const chartProduct = {
                 label: "Samsung",
                 data: [ss.length],
                 backgroundColor: "rgba(211, 22, 11, 1)",
+            },
+            {
+                label: "Computer",
+                data: [computer.length],
+                backgroundColor: "rgba(0, 0, 0, 0.18)",
+            },
+            {
+                label: "Other",
+                data: [tablet.length],
+                backgroundColor: "rgba(255, 108, 75, 0.46)",
+            },
+            {
+                label: "Total",
+                data: [data_product.length],
+                backgroundColor: "rgba(2, 229, 179, 0.8)",
             }
         ]
     },
@@ -69,7 +94,7 @@ export const chartProduct = {
             },
             y: {
                 min: 0,
-                max: 10,
+                max: 30,
                 ticks: {
                     stepSize: 1,
                     padding: 0,

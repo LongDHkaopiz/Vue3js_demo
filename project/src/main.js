@@ -21,7 +21,8 @@ library.add(faBars,faUserSecret,faRightFromBracket)
 
 const store = createStore({
   state : {
-    email:""
+    email: "",
+    switchOn: false,
   },
   mutations: {
     login (state,email) {
@@ -36,7 +37,10 @@ const store = createStore({
       if(localStorage.getItem('email')){
         state.email = localStorage.getItem('email');
        }
-    }
+    },
+    setSwitchOn(state, newValue) {
+      state.switchOn = newValue;
+    },
   },
   getters: {
     isLogin: state => state.email

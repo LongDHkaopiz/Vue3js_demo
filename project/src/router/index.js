@@ -27,27 +27,32 @@ const routes = [
   {
     path: '/admin/dashboard/weather',
     name: 'admin.dashboard.weather',
-    component: () => import(/* webpackChunkName: "about" */ '../views/admin/authors/Weather.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/admin/authors/Weather.vue'),
+    beforeEnter: requireAuth
   },
   {
     path: '/admin/dashboard/country',
     name: 'admin.dashboard.country',
-    component: () => import(/* webpackChunkName: "about" */ '../views/admin/authors/Country.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/admin/authors/Country.vue'),
+    beforeEnter: requireAuth
   },
   {
     path: '/admin/dashboard/anime-image',
     name: 'admin.dashboard.anime',
-    component: () => import(/* webpackChunkName: "about" */ '../views/admin/authors/Anime.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/admin/authors/Anime.vue'),
+    beforeEnter: requireAuth
   },
   {
     path: '/admin/dashboard/search-by-google',
     name: 'admin.dashboard.googlesearch',
-    component: () => import(/* webpackChunkName: "about" */ '../views/admin/authors/Search.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/admin/authors/Search.vue'),
+    beforeEnter: requireAuth
   },
   {
     path: '/update-password/:id',
     name: 'admin.update-password',
-    component: () => import(/* webpackChunkName: "about" */ '../views/admin/authors/UpdatePassword.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/admin/authors/UpdatePassword.vue'),
+    beforeEnter: requireAuth
   },
   {
     path: '/admin/sign-in',
@@ -57,17 +62,20 @@ const routes = [
   {
     path: '/admin/dashboard/profile/:id',
     name: 'admin.profile',
-    component: () => import(/* webpackChunkName: "about" */ '../views/admin/authors/Profile.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/admin/authors/Profile.vue'),
+    beforeEnter: requireAuth
   },
   {
     path: '/sign-up',
     name: 'admin.sign-up',
-    component: () => import(/* webpackChunkName: "about" */ '../views/admin/authors/SignUp.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/admin/authors/SignUp.vue'),
+    beforeEnter: requireAuth
   },
   {
     path: '/forgot-password',
     name: 'admin.reset-pass',
-    component: () => import(/* webpackChunkName: "about" */ '../views/admin/authors/ForgotPassword.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/admin/authors/ForgotPassword.vue'),
+    beforeEnter: requireAuth
   },
   {
     path: '/admin/products',
@@ -75,7 +83,8 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/admin/products/List.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/admin/products/List.vue'),
+    beforeEnter: requireAuth
   },
   {
     path: '/admin/products/create-new',
@@ -83,7 +92,8 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/admin/products/Form.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/admin/products/Form.vue'),
+    beforeEnter: requireAuth
   },
   {
     path: '/admin/products/update-product/:id',
@@ -91,7 +101,8 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/admin/products/Form.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/admin/products/Form.vue'),
+    beforeEnter: requireAuth
   },
   {
     path: '/admin/users',
@@ -99,7 +110,8 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/admin/users/Listuser.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/admin/users/Listuser.vue'),
+    beforeEnter: requireAuth
   },
   {
     path: '/admin/users/create-new',
@@ -107,7 +119,8 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/admin/users/Formuser.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/admin/users/Formuser.vue'),
+    beforeEnter: requireAuth
   },
   {
     path: '/admin/users/update-user/:id',
@@ -115,7 +128,8 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/admin/users/Formuser.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/admin/users/Formuser.vue'),
+    beforeEnter: requireAuth
   },
   
 ]
