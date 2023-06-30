@@ -90,6 +90,9 @@
 import { API_PRODUCT } from '../common/contants'
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+
 export default {
     name: "ProductList",
     data() {
@@ -222,38 +225,93 @@ export default {
         },
 
         exportPDF() {
-            const doc = new jsPDF('landscape');
-            doc.addFont('../../../assets/font/ArialUnicodeMS.ttf', 'ArialUnicodeMS', 'normal');
-            doc.setFontSize(9);
-            // Header
-            const headers = ["Stt", "Id", "Image", "Name", "Price", "Description"];
-            const tableData = this.products.map((product, index) => [
-                index + 1,
-                product.id,
-                product.image,
-                product.name,
-                product.price + " VND",
-                product.description
-            ]);
+            // const doc = new jsPDF('landscape');
+            // doc.addFont('../../../assets/font/ArialUnicodeMS.ttf', 'ArialUnicodeMS', 'normal');
+            // doc.setFontSize(9);
+            // // Header
+            // const headers = ["Stt", "Id", "Image", "Name", "Price", "Description"];
+            // const tableData = this.products.map((product, index) => [
+            //     index + 1,
+            //     product.id,
+            //     product.image,
+            //     product.name,
+            //     product.price + " VND",
+            //     product.description
+            // ]);
 
-            const columnWidths = [20, 15, 60, 60, 50, 40];
-            doc.autoTable({
-                head: [headers],
-                body: tableData,
-                startY: 15,
-                startX: 2,
-                columnWidth: columnWidths,
-                didDrawCell: (data) => {
-                    if (data.column.dataKey === 'description') {
-                        data.cell.styles.font = 'ArialUnicodeMS';
+            // const columnWidths = [5, 15, 30, 15, 20, 70];
+            // doc.autoTable({
+            //     head: [headers],
+            //     body: tableData,
+            //     startY: 15,
+            //     startX: 2,
+            //     columnWidths: columnWidths,
+
+            // });
+            // const currentDate = new Date();
+            // const dateTimeString = currentDate.toISOString().replace(/[-:.]/g, '');
+            // const filename = `products-${dateTimeString}.pdf`;
+
+            // doc.save(filename);
+
+            pdfMake.vfs = pdfFonts.pdfMake.vfs;
+            const columns = [
+                { header: 'Stt', key: 'index', width: 30 },
+                { header: 'Id', key: 'id', width: 50 },
+                { header: 'Image', key: 'image', width: 70 },
+                { header: 'Name', key: 'name', width: 100 },
+                { header: 'Price', key: 'price', width: 60 },
+                { header: 'Description', key: 'description', width: 170 }
+            ];
+
+            // Tạo một mảng chứa dữ liệu cho bảng
+            const tableData = this.products.map((product, index) => ({
+                index: index + 1,
+                id: product.id,
+                image: product.image,
+                name: product.name,
+                price: product.price + ' VND',
+                description: product.description
+            }));
+
+            // Tạo đối tượng định dạng bảng
+            const tableLayout = {
+                fillColor: function (rowIndex) {
+                    return rowIndex % 2 === 0 ? '#CCCCCC' : null;
+                }
+            };
+
+            // Tạo đối tượng PDF
+            const docDefinition = {
+                content: [
+                    // Tiêu đề
+                    { text: 'Product List', style: 'header' },
+                    '\n',
+                    // Bảng
+                    {
+                        table: {
+                            headerRows: 1,
+                            widths: columns.map(column => column.width),
+                            body: [
+                                columns.map(column => column.header),
+                                ...tableData.map(item => columns.map(column => item[column.key]))
+                            ],
+                            layout: tableLayout
+                        }
                     }
-                },
-            });
+                ],
+                styles: {
+                    header: {
+                        fontSize: 16,
+                        bold: true
+                    }
+                }
+            };
             const currentDate = new Date();
             const dateTimeString = currentDate.toISOString().replace(/[-:.]/g, '');
             const filename = `products-${dateTimeString}.pdf`;
-
-            doc.save(filename);
+            // Xuất file PDF
+            pdfMake.createPdf(docDefinition).download(filename);
         },
         // // ...
         // handleFileUpload(event) {
