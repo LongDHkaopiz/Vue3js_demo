@@ -1,5 +1,5 @@
 <template>
-	<div class="container h-100" >
+	<div class="container h-100" style="margin-top: 100px;">
 		<div class="d-flex justify-content-center h-100">
 			<div class="user_card">
 				<div class="d-flex justify-content-center">
@@ -11,15 +11,25 @@
 					<form @submit.prevent="checkLogin()">
 						<div class="input-group mb-3">
 							<div class="input-group-append">
-								<span class="input-group-text"><i class="fas fa-user"></i></span>
+								<span class="input-group-text">
+									<el-icon>
+										<Message />
+									</el-icon>
+								</span>
 							</div>
-							<input type="email" name="email" v-model="user.email" class="form-control input_user" placeholder="Enter your email">
+							<input type="email" name="email" v-model="user.email" class="form-control input_user"
+								placeholder="Enter your email">
 						</div>
 						<div class="input-group mb-2">
 							<div class="input-group-append">
-								<span class="input-group-text"><i class="fas fa-key"></i></span>
+								<span class="input-group-text">
+									<el-icon>
+										<Lock />
+									</el-icon>
+								</span>
 							</div>
-							<input type="password" name="password" minlength="8" v-model="user.password" class="form-control input_pass" placeholder="Enter your password">
+							<input type="password" name="password" minlength="8" v-model="user.password"
+								class="form-control input_pass" placeholder="Enter your password">
 						</div>
 						<div class="form-group">
 							<div class="custom-control custom-checkbox">
@@ -31,18 +41,18 @@
 							<button type="submit" class="btn login_btn">Login</button>
 						</div>
 					</form>
-			
+
 				</div>
 				<div class="mt-4">
 					<div class="d-flex justify-content-center links">
-						Don't have an account? <router-link to="/sign-up" class="ml-2">Sign Up</router-link>
+						Don't have an account? <router-link to="/admin/sign-up" class="ml-2">Sign Up</router-link>
 					</div>
 					<div class="d-flex justify-content-center links">
 						<router-link to="/forgot-password">Forgot your password?</router-link>
 					</div>
 				</div>
 				<!-- <div class="g-recaptcha" data-sitekey="recaptchaSiteKey" data-callback="vueRecaptchaApiLoaded"></div> -->
-				<vue-recaptcha ref="recaptcha" sitekey="recaptchaSiteKey" @verify="handleRecaptchaVerify"></vue-recaptcha>
+				<!-- <vue-recaptcha ref="recaptcha" sitekey="recaptchaSiteKey" @verify="handleRecaptchaVerify"></vue-recaptcha> -->
 			</div>
 		</div>
 	</div>
@@ -54,37 +64,37 @@ import { VueRecaptcha } from 'vue-recaptcha-v3'
 export default {
 	name: "SignForm",
 	components: { VueRecaptcha },
-    data() {
-        return {
-            user: {
-                email: "",
-                password: "",
-            },
-            errors: {
-                email: "",
-                password: "",
+	data() {
+		return {
+			user: {
+				email: "",
+				password: "",
+			},
+			errors: {
+				email: "",
+				password: "",
 			},
 			recaptchaSiteKey: '6LexlFgmAAAAAKv1sV8CZ7081YVUFc9iDDZAXflj',
 			recaptchaResponse: '',
-			
-        }
-    },
+
+		}
+	},
 	methods: {
 		...mapActions(['login']),
-        checkLogin() {
-            this.$swal.fire({
-                title: 'Good job!',
-                text: "You login successfully!",
-                icon: 'success'
-            }).then((result) => {
+		checkLogin() {
+			this.$swal.fire({
+				title: 'Good job!',
+				text: "You login successfully!",
+				icon: 'success'
+			}).then((result) => {
 				if (result.isConfirmed) {
 					// Verify the reCAPTCHA token before submitting the form
 					if (this.recaptchaResponse === null) {
 						console.error('reCAPTCHA v3 token is missing!');
 						return;
 					}
-                    this.$request.post(API_LOGIN, this.user).then(
-                        res => {
+					this.$request.post(API_LOGIN, this.user).then(
+						res => {
 							if (res.data.success) {
 								if (res.data.user.role === 'admin') {
 									this.$router.push({
@@ -97,18 +107,18 @@ export default {
 									})
 								}
 								this.$store.commit('login', this.user.email)
-                                return
-                            } else {
-                                this.$swal.fire({
-                                    icon: 'error',
-                                    title: 'Oops...',
-                                    text: 'Something went wrong!',
-                                })
-                            }
-                        }
-                    )
-                }
-            })
+								return
+							} else {
+								this.$swal.fire({
+									icon: 'error',
+									title: 'Oops...',
+									text: 'Something went wrong!',
+								})
+							}
+						}
+					)
+				}
+			})
 		},
 		// vueRecaptchaApiLoaded() {
 		// 	grecaptcha.ready(() => {
@@ -123,9 +133,9 @@ export default {
 			// 		this.recaptchaResponse = response;
 			// 	});
 			// });
-			this.recaptchaResponse =response
+			this.recaptchaResponse = response
 		},
 	},
-   
+
 }
 </script>

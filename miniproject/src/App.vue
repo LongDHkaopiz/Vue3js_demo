@@ -1,9 +1,20 @@
 <template>
   <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-    <router-link v-show="$route.path !== '/admin/sign-in' && $route.path !== '/user'" to="/admin/dashboard"> |
-      Dashboard</router-link>
+    <router-link to="/">
+      <el-icon>
+        <Monitor />
+      </el-icon>
+    </router-link> |
+    <router-link to="/about">
+      <el-icon>
+        <Operation />
+      </el-icon>
+    </router-link>
+    <router-link v-show="$route.path !== '/admin/sign-in' && $route.path !== '/user'" to="/admin/dashboard">|
+      <el-icon>
+        <House />
+      </el-icon>
+    </router-link>
     <div class="logout-admin" v-if="this.$route.params.role === 'user'">
       <router-link v-if="!$store.state.email" to="/admin/sign-in">
         Login

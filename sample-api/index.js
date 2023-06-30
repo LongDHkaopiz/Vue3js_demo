@@ -24,8 +24,9 @@ app.use(cors())
 app.use(bodyParser.json())
 
 app.get('/', (req, res) => {
-  res.send(`<h2 align="center" style="margin-top: 100px;">Longdh</h2>`)
- 
+  res.send(`<h2 align="center" style="margin-top: 100px;">data</h2>`)
+  // const data = db.get(`products`).filter(item => item.name.includes('iPhone')).value();
+  // res.send(data)
 })
 
 app.post('/api/v1/login', (req, res) => {
@@ -100,7 +101,13 @@ modules.forEach(moduleName => {
     db.get(`${moduleName}`).remove({ id: req.params.id }).write();
     res.json({ success: true })
   })
-
+  // search api
+  app.get(`/api/v1/${moduleName}/search/:keyword`, (req, res) => {
+    const { keyword } = req.params;
+    const lowercaseKeyword = keyword.toLowerCase();
+    const data = db.get(`${moduleName}`).filter(item => item.name.toLowerCase().includes(lowercaseKeyword) || item.name.toUpperCase().includes(keyword)).value();
+    return res.json(data);
+  });
  
 })
 app.use(function(req, res, next) {

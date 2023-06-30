@@ -11,19 +11,31 @@
                     <form @submit.prevent="save()">
                         <div class="input-group mb-3">
                             <div class="input-group-append">
-                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                <span class="input-group-text">
+                                    <el-icon>
+                                        <Avatar />
+                                    </el-icon>
+                                </span>
                             </div>
                             <input type="text" v-model="user.name" class="form-control input_user" placeholder="username">
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-append">
-                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                <span class="input-group-text">
+                                    <el-icon>
+                                        <Message />
+                                    </el-icon>
+                                </span>
                             </div>
                             <input type="email" v-model="user.email" class="form-control input_pass" placeholder="email">
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-append">
-                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                <span class="input-group-text">
+                                    <el-icon>
+                                        <Lock />
+                                    </el-icon>
+                                </span>
                             </div>
                             <input type="password" minlength="8" v-model="user.password" class="form-control input_pass"
                                 placeholder="password">
@@ -91,6 +103,6 @@ export default {
             })
         },
     },
-   
+
 }
 </script>

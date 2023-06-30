@@ -20,7 +20,7 @@ nav a.router-link-exact-active {
 }
 
 .product-list .princing-header {
-  gap: 29.2em;
+  padding: 0 20%;
 }
 
 .my-custom-scrollbar {

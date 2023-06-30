@@ -66,16 +66,16 @@ const routes = [
     beforeEnter: requireAuth
   },
   {
-    path: '/sign-up',
+    path: '/admin/sign-up',
     name: 'admin.sign-up',
-    component: () => import(/* webpackChunkName: "about" */ '../views/admin/authors/SignUp.vue'),
-    beforeEnter: requireAuth
+    component: () => import(/* webpackChunkName: "about" */ '../views/admin/authors/SignUp.vue')
+  
   },
   {
     path: '/forgot-password',
     name: 'admin.reset-pass',
-    component: () => import(/* webpackChunkName: "about" */ '../views/admin/authors/ForgotPassword.vue'),
-    beforeEnter: requireAuth
+    component: () => import(/* webpackChunkName: "about" */ '../views/admin/authors/ForgotPassword.vue')
+   
   },
   {
     path: '/admin/products',
