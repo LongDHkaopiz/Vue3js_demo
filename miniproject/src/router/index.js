@@ -142,6 +142,12 @@ const routes = [
     name: 'admin.news',
     component: () => import(/* webpackChunkName: "about" */ '../views/admin/authors/News.vue'),
     beforeEnter: requireAuth
+  },
+  {
+    path: '/admin/dashboard/music',
+    name: 'admin.music',
+    component: () => import(/* webpackChunkName: "about" */ '../views/admin/authors/Music.vue'),
+    beforeEnter: requireAuth
   }
   
 ]

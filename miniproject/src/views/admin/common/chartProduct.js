@@ -41,7 +41,7 @@ export const chartProduct = {
         labels: ['Statistics on the number of products'],
         datasets: [
             {
-                label: "Iphone 14",
+                label: "Iphone",
                 data: [iphone.length],
                 backgroundColor: "rgba(125, 19, 203, 1)",
             },

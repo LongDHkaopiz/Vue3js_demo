@@ -51,8 +51,6 @@
 						<router-link to="/forgot-password">Forgot your password?</router-link>
 					</div>
 				</div>
-				<!-- <div class="g-recaptcha" data-sitekey="recaptchaSiteKey" data-callback="vueRecaptchaApiLoaded"></div> -->
-				<!-- <vue-recaptcha ref="recaptcha" sitekey="recaptchaSiteKey" @verify="handleRecaptchaVerify"></vue-recaptcha> -->
 			</div>
 		</div>
 	</div>

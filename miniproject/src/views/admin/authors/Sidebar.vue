@@ -47,6 +47,9 @@
                     <router-link to="/admin/dashboard/news">News</router-link>
                 </li>
                 <li>
+                    <router-link to="/admin/dashboard/music">Music</router-link>
+                </li>
+                <li>
                     <router-link to="/admin/dashboard/search-by-google">Search By Google</router-link>
                 </li>
             </ul>
