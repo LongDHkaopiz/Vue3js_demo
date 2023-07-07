@@ -89,7 +89,6 @@ export default {
                 const response = await fetch(url, options);
                 const result = await response.json();
                 this.results = result[0].items
-                console.log(this.results);
             } catch (error) {
                 console.error(error);
             }

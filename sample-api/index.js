@@ -11,6 +11,7 @@ const { log } = require("console")
 let rawdata = fs.readFileSync('db.json');
 let routes = JSON.parse(rawdata);
 const axios = require('axios');
+const csv = require('csv-parser');
 
 const PORT = 3000;
 
@@ -133,6 +134,36 @@ app.get('/api/steins-gate', async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
+// // import data product
+
+//   app.post('/api/v1/products/import/csv', (req, res) => {
+//     const { filePath } = req.body;
+
+//     if (!filePath || !fs.existsSync(filePath)) {
+//       return res.status(400).json({
+//         success: false,
+//         message: 'Đường dẫn tới file CSV không hợp lệ.',
+//       });
+//     }
+//     console.log(filePath);
+//     const results = [];
+
+//     fs.createReadStream(filePath)
+//       .pipe(csv())
+//       .on('data', (data) => results.push(data))
+//       .on('end', () => {
+//         // Thêm các sản phẩm vào cơ sở dữ liệu
+//         db.get(`${moduleName}`)
+//           .push(...results.map((product) => ({ ...product, id: nanoid() })))
+//           .write();
+
+//         return res.status(200).json({
+//           success: true,
+//           message: 'Import sản phẩm từ file CSV thành công.',
+//         });
+//       });
+//   });
+
 
 app.listen(PORT, ()=> {
   console.log(`Backend is running on http://localhost:${PORT}`)

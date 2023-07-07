@@ -209,6 +209,48 @@
       "description": "Microphone Saramonic Blink Me - Touch screen, outstanding quality\nThe Saramonic Blink Me Microphone is a device that delivers high-end recording quality, reaching a stable 48kHz/24bit standard. Microphone is also equipped with a touch screen, supports customization, flexible touch and swipe.\nDifferent design with modern touch screen\nThe Saramonic Blink Me Microphone is a lapel microphone product, impressively compact but very different. Specifically, this Saramonic microphone has a circular shape, with a modern touch screen on the top for both the receiver and the transmitter.\nTherefore, users can easily customize actions during recording by flexibly swiping instead of using the button function. Moreover, this screen also clearly displays the parameters, supports you to monitor the recording status and can change the wallpaper at will.\nOutstanding recording quality, safe storage\nAlthough the Saramonic Blink Me microphone is compact, it delivers outstanding recording quality with 48kHz/24bit standard. Combined with that is 2.4GHz wireless transmission technology, supporting stable sound and eliminating ambient noise with Noise Reduction feature.",
       "image": "https://bom.so/K0ZW4g",
       "id": "6q4dLjGjJ3JwfBYIxEeVx"
+    },
+    {
+      "name": "Loa Bluetooth Marshall Emberton",
+      "price": "3.249.000",
+      "description": "In the high-end speaker segment of the Marshall brand, the Marshall Emberton Bluetooth speaker is a premium audio device with excellent quality and luxurious design. Possessing a compact, durable design and clear, detailed sound reproduction, Marshall Emberton offers a wonderful and diverse listening experience. If you are a music lover and passionate about entertainment, this Marshall speaker will definitely be a great choice for you.",
+      "image": "https://cdn2.cellphones.com.vn/358x358,webp,q100/media/catalog/product/l/o/loa-bluetooth-marshall-emberton-ksp.png",
+      "id": "jfeHc-SGCvWRsnQxTEhV2"
+    },
+    {
+      "name": "Loa Bluetooth Harman Kardon Onyx Studio 7",
+      "price": "5.390.000",
+      "description": "Speaker Harman Kardon Onyx Studio 7 is a product manufactured by Harman Kardon, possessing a novel design, combined with Bluetooth 4.2 connectivity, promising to be a product that brings you interesting experiences and Immerse yourself in the vibrant atmosphere.\n\nGenuine Onyx Studio 7 bluetooth speaker has a new and beautiful design with a circular shape combined with an anodized handle, making it look like the image of a globe. Thanks to this unique design, this 7th generation speaker brings personality and style to the owner.",
+      "image": "https://cdn2.cellphones.com.vn/358x358,webp,q100/media/catalog/product/g/r/group_215_2_.png",
+      "id": "HJf4Akx1q31i25-yTEGW0"
+    },
+    {
+      "image": "https://bom.so/ahqW5X",
+      "name": "Remax RM-598 wired headphones sound or noise canceling",
+      "price": "300000",
+      "description": "The first highlight with this wired headset is the extremely modern, sturdy and durable design. The entire cable part is made of elastic TPE material, no tangles, no knots, you can curl up for storage without affecting the style.",
+      "id": "UW4Br1J5hdN1ANZj85AJ9"
+    },
+    {
+      "image": "https://cdn2.cellphones.com.vn/358x358,webp,q100/media/catalog/product/t/a/tai-nghe-khong-day-havit-tw-947_1__1_1.png",
+      "name": "Havit TW947 wireless headphones",
+      "price": "450000",
+      "description": "Fast connection, stable transmission with 5.3 . Bluetooth technology",
+      "id": "IQFPa3ErvSv21XoYX0EeO"
+    },
+    {
+      "image": "https://cdn2.cellphones.com.vn/358x358,webp,q100/media/catalog/product/g/r/group_161_1__2.png",
+      "name": "Robot Airbuds T50s Wireless Headphones",
+      "price": "320000",
+      "description": "Robot Airbuds T50s is the latest True Wireless headset, featuring excellent audio performance and integrating many modern technologies. Thanks to that, users can experience new features on the Robot headset easily. Take a look at the following description to better understand the strengths of the Robot Airbuds T50s.",
+      "id": "P75ocB85CP3qRrQYQea3v"
+    },
+    {
+      "image": "https://cdn2.cellphones.com.vn/358x358,webp,q100/media/catalog/product/f/r/frame_3_3.png",
+      "name": "Apple EarPods Lightning (MMTN2) Genuine Apple Vietnam",
+      "price": "550000",
+      "description": "Earpods with Lightning Connection are designed with elegant white color for you to show your youthful, dynamic and stylish style, creating a trendy feeling for the user. The two ear tips are designed like two peas, snugly in the ear to help the best soundproof Apple headphones for you to fully enjoy every musical moment.",
+      "id": "KPUushYz1-nuFe6C-pyHy"
     }
   ],
   "users": [
@@ -227,7 +269,7 @@
       "id": "9m5Rvtlsj2GSHOxVVx4qC"
     },
     {
-      "name": "asdasdqw",
+      "name": "test",
       "email": "test@gmail.com",
       "password": "123456789",
       "role": "user",
@@ -239,6 +281,13 @@
       "password": "long@123456",
       "role": "admin",
       "id": "-f175AO5EApD9hQ7hzM48"
+    },
+    {
+      "name": "USER",
+      "email": "user2@gmail.com",
+      "password": "12345678",
+      "role": "user",
+      "id": "EmFt9UrQZCoQS2Xw7kkrj"
     }
   ]
 }

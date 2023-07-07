@@ -13,5 +13,10 @@ module.exports = defineConfig({
         }
       }
     }
-  }
+  },
+  // resolve: {
+  //   alias: {
+  //     'papaparse': 'papaparse/dist/papaparse.min.js'
+  //   }
+  // }
 })

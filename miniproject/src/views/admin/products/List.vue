@@ -7,15 +7,21 @@
 
 
             <div class="d-flex justify-content-between mb-3">
-                <div class="function_export">
+                <div class="function_export d-flex ">
                     <button @click="exportPDF" class="btn btn-primary" style="margin-right: 10px;">Export PDF</button>
                     <button @click="exportCSV" class="btn btn-primary">Export CSV</button>
+                    <div class="import-product" style="margin-left: 10px;">
+                        <input type="file" ref="fileInput" style="display: none" @change="handleFileUpload">
+                        <button class="btn btn-primary import-button" @click="triggerFileInput">Import CSV</button>
+                    </div>
                 </div>
+
                 <div class="from-search d-flex">
                     <input v-model="searchKeyword" type="text" placeholder="Search by name" class="form-control"
                         style="width: 200px; margin-right: 10px;">
                     <button @click="searchProduct" class="btn btn-primary">Search</button>
                 </div>
+
             </div>
             <!-- <div class="product-items  table-wrapper-scroll-y my-custom-scrollbar mb-3 text-center ">
                 <table class="table table-fixed table-bordered table-striped mb-0" width="100%">
@@ -74,25 +80,21 @@
             </el-table>
             <div class="create-product">
                 <router-link to="/admin/products/create-new" class="text-white" style="margin-top: 20px;">
-                    <button class="btn btn-primary create-new float-right mt-3">Create New</button>
+                    <button class="btn btn-primary create-new float-right mt-3" style=" margin-bottom: 30px;">Create
+                        New</button>
                 </router-link>
             </div>
-            <!-- <div class="import-data d-flex mt-3">
-                <input ref="fileInput" type="file" accept=".csv" style="display: none" @change="handleFileUpload">
-                <button class="btn btn-primary" @click="$refs.fileInput.click()">Import Data</button>
-            </div> -->
-
         </div>
 
     </div>
 </template>
 <script>
-import { API_PRODUCT } from '../common/contants'
+import { API_PRODUCT, API_IMPORT_PRODUCT } from '../common/contants'
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
-
+import Papa from 'papaparse';
 export default {
     name: "ProductList",
     data() {
@@ -102,9 +104,8 @@ export default {
             searchKeyword: ''
         }
     },
-    created() {
+    async mounted() {
         this.getAllProduct()
-
     },
     methods: {
         getAllProduct() {
@@ -313,36 +314,36 @@ export default {
             // Xuất file PDF
             pdfMake.createPdf(docDefinition).download(filename);
         },
-        // // ...
-        // handleFileUpload(event) {
-        //     const file = event.target.files[0];
-        //     if (file) {
-        //         const reader = new FileReader();
-        //         reader.onload = (e) => {
-        //             const contents = e.target.result;
-        //             this.parseCSV(contents);
-        //         };
-        //         reader.readAsText(file);
-        //     }
-        // },
-        // parseCSV(csvData) {
-        //     const lines = csvData.split("\n");
-        //     const headers = lines[0].trim().split(",");
-
-        //     for (let i = 1; i < lines.length; i++) {
-        //         const data = lines[i].trim().split(",");
-        //         if (data.length === headers.length) {
-        //             const product = {};
-        //             for (let j = 0; j < headers.length; j++) {
-        //                 product[headers[j]] = data[j];
-        //             }
-        //             this.products.push(product);
-        //         }
-        //     }
-
-        //     // Perform your desired operations with the imported products array
-        //     console.log(this.products);
-        // },
+        triggerFileInput() {
+            this.$refs.fileInput.click();
+        },
+        handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                Papa.parse(file, {
+                    header: true,
+                    complete: (results) => {
+                        results.data.pop()
+                        this.importProducts(results.data);
+                    }
+                });
+            }
+        },
+        importProducts(data) {
+            data.forEach(element => {
+                this.$request.post(API_PRODUCT, element).then(
+                    res => {
+                        if (res.data.success) {
+                            this.$router.push({
+                                name: 'product.list'
+                            })
+                            return
+                        }
+                        alert('Something went wrong')
+                    }
+                )
+            });
+        },
     },
 }
 </script>
